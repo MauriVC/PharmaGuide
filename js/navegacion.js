@@ -37,6 +37,9 @@ function inicializarNavegacion() {
                 
                 if (sectionId === 'buscador') {
                     mostrarBuscador();
+                    // Limpiar resultados inteligentes al cambiar de sección
+                    const resultadosInteligentes = document.getElementById('resultados-inteligentes');
+                    if (resultadosInteligentes) resultadosInteligentes.innerHTML = '';
                 } else if (sectionId === 'gestion') {
                     mostrarGestion();
                 } else if (sectionId === 'trabajadores') {

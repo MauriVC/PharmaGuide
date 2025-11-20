@@ -5,6 +5,7 @@
 function inicializarAplicacion() {
     inicializarNavegacion();
     inicializarBuscador();
+    inicializarBusquedaInteligente();
     inicializarDashboard();
     inicializarFormularioMedicamento();
     inicializarFormularioTrabajador();
