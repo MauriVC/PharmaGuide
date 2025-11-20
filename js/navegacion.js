@@ -22,7 +22,7 @@ function inicializarNavegacion() {
             const sectionId = this.getAttribute('data-section');
             
             // Verificar permisos antes de cambiar de sección
-            if ((sectionId === 'gestion' || sectionId === 'trabajadores') && !esAdmin()) {
+            if ((sectionId === 'gestion' || sectionId === 'trabajadores' || sectionId === 'compras') && !esAdmin()) {
                 mostrarToast('No tiene permisos para acceder a esta sección', 'error');
                 return;
             }
@@ -43,6 +43,10 @@ function inicializarNavegacion() {
                     mostrarTrabajadores();
                 } else if (sectionId === 'dashboard') {
                     inicializarDashboard();
+                } else if (sectionId === 'ventas') {
+                    mostrarVentas();
+                } else if (sectionId === 'compras') {
+                    mostrarCompras();
                 }
             }
         });

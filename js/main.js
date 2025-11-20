@@ -8,6 +8,8 @@ function inicializarAplicacion() {
     inicializarDashboard();
     inicializarFormularioMedicamento();
     inicializarFormularioTrabajador();
+    inicializarVentas();
+    inicializarCompras();
     mostrarBuscador();
     
     if (esAdmin()) {

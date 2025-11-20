@@ -18,7 +18,7 @@ function mostrarGestion() {
     if (medicamentos.length === 0) {
         tbody.innerHTML = `
             <tr>
-                <td colspan="7" class="text-center text-muted py-4">
+                <td colspan="6" class="text-center text-muted py-4">
                     <i class="fas fa-database me-2"></i>No hay medicamentos registrados
                 </td>
             </tr>
@@ -38,13 +38,8 @@ function mostrarGestion() {
             stockBadge = '<span class="badge bg-warning badge-stock">Bajo</span>';
         }
 
-        const imagen = med.imagen || 'https://via.placeholder.com/50x50/CCCCCC/666666?text=?';
-
         tr.innerHTML = `
             <td>${med.id}</td>
-            <td>
-                <img src="${imagen}" alt="${med.nombre}" class="medicamento-thumb" style="width: 50px; height: 50px; object-fit: cover; border-radius: 4px;" onerror="this.src='https://via.placeholder.com/50x50/CCCCCC/666666?text=?'">
-            </td>
             <td><strong>${med.nombre}</strong></td>
             <td><span class="badge bg-secondary">${med.categoria}</span></td>
             <td>${stockBadge} <small class="text-muted">(${med.stock} unidades)</small></td>
@@ -77,7 +72,6 @@ function abrirModalCrear() {
     document.getElementById('modalMedicamentoLabel').innerHTML = '<i class="fas fa-plus me-2"></i>Nuevo Medicamento';
     document.getElementById('form-medicamento').reset();
     document.getElementById('form-errors').classList.add('d-none');
-    document.getElementById('medicamento-imagen').value = '';
     
     const modal = new bootstrap.Modal(document.getElementById('modalMedicamento'));
     modal.show();
@@ -97,7 +91,6 @@ function editarMedicamento(id) {
     document.getElementById('medicamento-precio').value = medicamento.precio;
     document.getElementById('medicamento-descripcion').value = medicamento.descripcion_tecnica;
     document.getElementById('medicamento-guia').value = medicamento.guia_paciente;
-    document.getElementById('medicamento-imagen').value = medicamento.imagen || '';
     document.getElementById('modalMedicamentoLabel').innerHTML = '<i class="fas fa-edit me-2"></i>Editar Medicamento';
     document.getElementById('form-errors').classList.add('d-none');
     
@@ -163,7 +156,6 @@ function inicializarFormularioMedicamento() {
             categoria: document.getElementById('medicamento-categoria').value,
             stock: parseInt(document.getElementById('medicamento-stock').value),
             precio: parseFloat(document.getElementById('medicamento-precio').value),
-            imagen: document.getElementById('medicamento-imagen').value.trim() || 'https://via.placeholder.com/300x300/CCCCCC/666666?text=Medicamento',
             descripcion_tecnica: document.getElementById('medicamento-descripcion').value.trim(),
             guia_paciente: document.getElementById('medicamento-guia').value.trim()
         };
@@ -184,6 +176,9 @@ function inicializarFormularioMedicamento() {
             return;
         }
         
+        // Verificar si hay una compra pendiente asociada
+        const compraId = document.getElementById('medicamento-id').getAttribute('data-compra-id');
+        
         // Guardar
         if (id) {
             const index = medicamentos.findIndex(m => m.id === parseInt(id));
@@ -197,6 +192,22 @@ function inicializarFormularioMedicamento() {
             guardarMedicamentos(medicamentos);
             mostrarToast('Medicamento creado correctamente', 'success');
         }
+        
+        // Si había una compra pendiente, marcarla como registrada
+        if (compraId) {
+            const comprasPendientes = JSON.parse(localStorage.getItem('comprasPendientes') || '[]');
+            const compra = comprasPendientes.find(c => c.id === parseInt(compraId));
+            if (compra) {
+                compra.registrado = true;
+                localStorage.setItem('comprasPendientes', JSON.stringify(comprasPendientes));
+                if (typeof actualizarComprasPendientes === 'function') {
+                    actualizarComprasPendientes();
+                }
+            }
+        }
+        
+        // Limpiar el atributo temporal
+        document.getElementById('medicamento-id').removeAttribute('data-compra-id');
         
         const modal = bootstrap.Modal.getInstance(document.getElementById('modalMedicamento'));
         if (modal) modal.hide();
@@ -212,13 +223,8 @@ function mostrarDetalles(id) {
     const medicamento = medicamentos.find(m => m.id === id);
     if (!medicamento) return;
 
-    const imagen = medicamento.imagen || 'https://via.placeholder.com/300x300/CCCCCC/666666?text=Medicamento';
-
     const datosTecnicos = document.getElementById('datos-tecnicos');
     datosTecnicos.innerHTML = `
-        <div class="text-center mb-3">
-            <img src="${imagen}" alt="${medicamento.nombre}" class="img-fluid rounded" style="max-height: 200px;">
-        </div>
         <p><strong>ID:</strong> ${medicamento.id}</p>
         <p><strong>Nombre:</strong> ${medicamento.nombre}</p>
         <p><strong>Categoría:</strong> <span class="badge bg-secondary">${medicamento.categoria}</span></p>
