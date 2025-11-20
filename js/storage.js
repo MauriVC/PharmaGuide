@@ -2,12 +2,37 @@
 // GESTIÓN DE ALMACENAMIENTO (LocalStorage)
 // ============================================
 
-function inicializarDatos() {
-    if (!localStorage.getItem('medicamentos')) {
-        localStorage.setItem('medicamentos', JSON.stringify(medicamentosIniciales));
+let medicamentosIniciales = [];
+
+// Cargar medicamentos desde JSON
+async function cargarMedicamentosDesdeJSON() {
+    try {
+        const response = await fetch('data/medicamentos.json');
+        if (response.ok) {
+            const datos = await response.json();
+            return datos;
+        } else {
+            console.error('Error al cargar medicamentos.json:', response.status);
+            return [];
+        }
+    } catch (error) {
+        console.error('Error al cargar medicamentos.json:', error);
+        return [];
     }
+}
+
+async function inicializarDatos() {
+    // Inicializar usuarios
     if (!localStorage.getItem('usuarios')) {
         localStorage.setItem('usuarios', JSON.stringify(usuarios));
+    }
+    
+    // Cargar medicamentos desde JSON solo si no hay datos en localStorage
+    if (!localStorage.getItem('medicamentos')) {
+        medicamentosIniciales = await cargarMedicamentosDesdeJSON();
+        if (medicamentosIniciales.length > 0) {
+            localStorage.setItem('medicamentos', JSON.stringify(medicamentosIniciales));
+        }
     }
 }
 

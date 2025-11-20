@@ -17,8 +17,8 @@ function inicializarAplicacion() {
 }
 
 // Inicializar cuando el DOM está listo
-document.addEventListener('DOMContentLoaded', function() {
-    inicializarDatos();
+document.addEventListener('DOMContentLoaded', async function() {
+    await inicializarDatos();
     inicializarLogin();
     
     // Verificar si hay sesión activa (mantener sesión al recargar)

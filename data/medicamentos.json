@@ -1,0 +1,203 @@
+[
+    {
+        "id": 1,
+        "nombre": "Paracetamol 500mg",
+        "categoria": "Analgésico",
+        "stock": 150,
+        "precio": 8.50,
+        "imagen": "https://via.placeholder.com/300x300/4A90E2/FFFFFF?text=Paracetamol",
+        "descripcion_tecnica": "Paracetamol es un analgésico y antipirético. Mecanismo de acción: inhibe la síntesis de prostaglandinas en el sistema nervioso central. Dosis: 500-1000mg cada 6-8 horas. Máximo 4g/día. Contraindicaciones: insuficiencia hepática grave, hipersensibilidad. Interacciones: warfarina (aumenta riesgo hemorrágico).",
+        "guia_paciente": "Tome este medicamento para aliviar el dolor y bajar la fiebre. Puede tomarlo con o sin alimentos. No exceda 4 comprimidos al día. Si el dolor persiste más de 3 días o la fiebre más de 1 día, consulte a su médico. Evite el alcohol mientras lo toma."
+    },
+    {
+        "id": 2,
+        "nombre": "Ibuprofeno 400mg",
+        "categoria": "Antiinflamatorio",
+        "stock": 120,
+        "precio": 12.00,
+        "imagen": "https://via.placeholder.com/300x300/E74C3C/FFFFFF?text=Ibuprofeno",
+        "descripcion_tecnica": "Ibuprofeno es un AINE (antiinflamatorio no esteroideo). Inhibe la COX-1 y COX-2, reduciendo prostaglandinas. Dosis: 400-600mg cada 6-8 horas. Máximo 2400mg/día. Efectos adversos: gastritis, úlcera péptica, aumento de presión arterial. Contraindicaciones: úlcera activa, insuficiencia renal grave, tercer trimestre de embarazo.",
+        "guia_paciente": "Tome con alimentos o leche para evitar malestar estomacal. Útil para dolores musculares, inflamación y fiebre. No lo use si tiene problemas de estómago o úlceras. Si experimenta dolor abdominal, suspenda el tratamiento y consulte. No tome más de 6 comprimidos al día."
+    },
+    {
+        "id": 3,
+        "nombre": "Amoxicilina 500mg",
+        "categoria": "Antibiótico",
+        "stock": 80,
+        "precio": 15.75,
+        "imagen": "https://via.placeholder.com/300x300/27AE60/FFFFFF?text=Amoxicilina",
+        "descripcion_tecnica": "Amoxicilina es un antibiótico betalactámico de amplio espectro. Pertenece a las penicilinas. Mecanismo: inhibe la síntesis de la pared celular bacteriana. Dosis: 500mg cada 8 horas o 875mg cada 12 horas. Duración: 7-14 días según infección. Efectos adversos: diarrea, náuseas, erupciones cutáneas. Contraindicaciones: alergia a penicilinas.",
+        "guia_paciente": "Es un antibiótico que debe tomarse exactamente como se le indicó. Complete todo el tratamiento aunque se sienta mejor. Tome con alimentos para reducir molestias estomacales. Si olvida una dosis, tómela tan pronto como recuerde. Si desarrolla erupción cutánea, suspenda y llame a su médico inmediatamente."
+    },
+    {
+        "id": 4,
+        "nombre": "Omeprazol 20mg",
+        "categoria": "Gastroprotector",
+        "stock": 200,
+        "precio": 18.50,
+        "imagen": "https://via.placeholder.com/300x300/F39C12/FFFFFF?text=Omeprazol",
+        "descripcion_tecnica": "Omeprazol es un inhibidor de la bomba de protones (IBP). Reduce la secreción ácida gástrica bloqueando la H+/K+ ATPasa. Dosis: 20-40mg una vez al día, preferiblemente antes del desayuno. Indicado para: ERGE, úlcera péptica, síndrome de Zollinger-Ellison. Efectos adversos: cefalea, diarrea, náuseas. Interacciones: puede reducir absorción de vitamina B12, hierro.",
+        "guia_paciente": "Tome este medicamento 30 minutos antes del desayuno con un vaso de agua. No lo mastique ni triture. Ayuda a reducir el ácido del estómago. Si tiene acidez o reflujo, este medicamento puede aliviarlo. Tome todos los días a la misma hora. Puede tardar unos días en hacer efecto completo."
+    },
+    {
+        "id": 5,
+        "nombre": "Loratadina 10mg",
+        "categoria": "Antihistamínico",
+        "stock": 95,
+        "precio": 9.25,
+        "imagen": "https://via.placeholder.com/300x300/9B59B6/FFFFFF?text=Loratadina",
+        "descripcion_tecnica": "Loratadina es un antihistamínico H1 de segunda generación. Bloquea los receptores H1 periféricos sin efectos sedantes significativos. Dosis: 10mg una vez al día. Indicado para: rinitis alérgica, urticaria. Efectos adversos: somnolencia leve, cefalea, sequedad de boca (menos frecuente que antihistamínicos de primera generación). Contraindicaciones: hipersensibilidad.",
+        "guia_paciente": "Tome una tableta al día para aliviar síntomas de alergia como estornudos, picazón y secreción nasal. Puede tomarlo con o sin alimentos. Este medicamento generalmente no causa somnolencia, pero evite conducir si se siente somnoliento. Efectivo para alergias estacionales y picaduras de insectos."
+    },
+    {
+        "id": 6,
+        "nombre": "Metformina 850mg",
+        "categoria": "Antidiabético",
+        "stock": 110,
+        "precio": 22.00,
+        "imagen": "https://via.placeholder.com/300x300/16A085/FFFFFF?text=Metformina",
+        "descripcion_tecnica": "Metformina es un biguanida, antidiabético oral. Mecanismo: reduce la producción hepática de glucosa, aumenta la sensibilidad a la insulina, reduce absorción intestinal de glucosa. Dosis: 500-850mg 2-3 veces al día con las comidas. Máximo 2550mg/día. Efectos adversos: náuseas, diarrea, sabor metálico (especialmente al inicio). Contraindicaciones: insuficiencia renal, acidosis láctica, insuficiencia hepática.",
+        "guia_paciente": "Tome este medicamento con las comidas para reducir molestias estomacales. Es para controlar el azúcar en la sangre en diabetes tipo 2. Siga una dieta saludable y haga ejercicio regularmente. Los efectos secundarios como náuseas suelen mejorar después de unas semanas. Monitoree su azúcar en sangre según las indicaciones de su médico."
+    },
+    {
+        "id": 7,
+        "nombre": "Atorvastatina 20mg",
+        "categoria": "Hipolipemiante",
+        "stock": 75,
+        "precio": 28.50,
+        "imagen": "https://via.placeholder.com/300x300/E67E22/FFFFFF?text=Atorvastatina",
+        "descripcion_tecnica": "Atorvastatina es una estatina, inhibidor de la HMG-CoA reductasa. Reduce colesterol LDL, aumenta HDL, reduce triglicéridos. Dosis: 10-80mg una vez al día, preferiblemente por la noche. Efectos adversos: mialgias, elevación de transaminasas, rabdomiólisis (raro). Contraindicaciones: enfermedad hepática activa, embarazo, lactancia. Interacciones: jugo de pomelo (aumenta concentración).",
+        "guia_paciente": "Tome una tableta al día, preferiblemente por la noche. Ayuda a reducir el colesterol y prevenir problemas cardíacos. Puede tomarlo con o sin alimentos. Evite el jugo de pomelo mientras toma este medicamento. Si experimenta dolor muscular inusual, informe a su médico. Siga una dieta baja en grasas."
+    },
+    {
+        "id": 8,
+        "nombre": "Losartán 50mg",
+        "categoria": "Antihipertensivo",
+        "stock": 130,
+        "precio": 19.75,
+        "imagen": "https://via.placeholder.com/300x300/3498DB/FFFFFF?text=Losartan",
+        "descripcion_tecnica": "Losartán es un antagonista del receptor de angiotensina II (ARA-II). Bloquea los efectos de la angiotensina II. Dosis: 50-100mg una vez al día. Indicado para: hipertensión, nefropatía diabética, insuficiencia cardíaca. Efectos adversos: mareos, hipotensión, hiperkalemia. Contraindicaciones: embarazo (segundo y tercer trimestre), estenosis bilateral de arterias renales.",
+        "guia_paciente": "Tome este medicamento una vez al día para controlar su presión arterial. Puede tomarlo con o sin alimentos. Es importante tomarlo todos los días a la misma hora. Puede causar mareos, especialmente al levantarse. Levántese lentamente. No deje de tomarlo sin consultar a su médico, incluso si se siente bien."
+    },
+    {
+        "id": 9,
+        "nombre": "Salbutamol Inhalador",
+        "categoria": "Broncodilatador",
+        "stock": 60,
+        "precio": 16.50,
+        "imagen": "https://via.placeholder.com/300x300/1ABC9C/FFFFFF?text=Salbutamol",
+        "descripcion_tecnica": "Salbutamol es un agonista beta-2 adrenérgico de acción corta. Relaja el músculo liso bronquial. Dosis: 1-2 inhalaciones cada 4-6 horas según necesidad. Máximo 8 inhalaciones/día. Efectos adversos: taquicardia, temblor, hipokalemia. Contraindicaciones: hipersensibilidad. Uso en asma y EPOC como rescate.",
+        "guia_paciente": "Este inhalador es para aliviar rápidamente la dificultad para respirar. Agite el inhalador antes de usar. Exhale completamente, coloque la boquilla en la boca, presione e inhale profundamente. Aguante la respiración 10 segundos. Si necesita más de 2 inhalaciones cada 4 horas, consulte a su médico. Lleve siempre el inhalador consigo."
+    },
+    {
+        "id": 10,
+        "nombre": "Diclofenaco 50mg",
+        "categoria": "Antiinflamatorio",
+        "stock": 100,
+        "precio": 11.25,
+        "imagen": "https://via.placeholder.com/300x300/E74C3C/FFFFFF?text=Diclofenaco",
+        "descripcion_tecnica": "Diclofenaco es un AINE con acción analgésica, antiinflamatoria y antipirética. Inhibe la ciclooxigenasa. Dosis: 50mg 2-3 veces al día con alimentos. Formas: oral, tópica, inyectable. Efectos adversos: gastritis, úlcera, elevación de enzimas hepáticas, retención de líquidos. Contraindicaciones: úlcera activa, insuficiencia cardíaca grave, insuficiencia renal.",
+        "guia_paciente": "Tome con alimentos para proteger su estómago. Útil para dolores articulares, musculares y inflamación. No lo use por más de 7-10 días sin supervisión médica. Si tiene problemas de estómago, evite este medicamento. Puede aumentar la presión arterial, monitoree si es hipertenso."
+    },
+    {
+        "id": 11,
+        "nombre": "Amlodipino 5mg",
+        "categoria": "Antihipertensivo",
+        "stock": 140,
+        "precio": 14.00,
+        "imagen": "https://via.placeholder.com/300x300/3498DB/FFFFFF?text=Amlodipino",
+        "descripcion_tecnica": "Amlodipino es un bloqueador de canales de calcio dihidropiridínico. Relaja el músculo liso vascular. Dosis: 5-10mg una vez al día. Indicado para: hipertensión, angina de pecho. Efectos adversos: edema de tobillos, rubor facial, cefalea, mareos. Contraindicaciones: hipersensibilidad, shock cardiogénico, estenosis aórtica grave.",
+        "guia_paciente": "Tome una tableta al día a la misma hora. Ayuda a bajar la presión arterial y mejorar el flujo sanguíneo. Puede causar hinchazón en los tobillos, esto es normal pero informe a su médico si es molesto. Puede tomarse con o sin alimentos. No deje de tomarlo abruptamente."
+    },
+    {
+        "id": 12,
+        "nombre": "Levotiroxina 100mcg",
+        "categoria": "Hormona Tiroidea",
+        "stock": 85,
+        "precio": 25.00,
+        "imagen": "https://via.placeholder.com/300x300/F39C12/FFFFFF?text=Levotiroxina",
+        "descripcion_tecnica": "Levotiroxina es la forma sintética de la hormona tiroidea T4. Reemplaza la hormona tiroidea deficiente. Dosis: 50-200mcg una vez al día en ayunas, 30-60 minutos antes del desayuno. Indicado para: hipotiroidismo. Efectos adversos: síntomas de hipertiroidismo si sobredosis (palpitaciones, insomnio, pérdida de peso). Interacciones: calcio, hierro, antiácidos (reducen absorción).",
+        "guia_paciente": "Tome este medicamento en ayunas, 30-60 minutos antes del desayuno, con un vaso de agua. No lo tome con café, leche o antiácidos. Es para reemplazar la hormona tiroidea que su cuerpo no produce. Tome todos los días a la misma hora. Necesitará análisis de sangre periódicos para ajustar la dosis."
+    },
+    {
+        "id": 13,
+        "nombre": "Sertralina 50mg",
+        "categoria": "Antidepresivo",
+        "stock": 70,
+        "precio": 32.00,
+        "imagen": "https://via.placeholder.com/300x300/9B59B6/FFFFFF?text=Sertralina",
+        "descripcion_tecnica": "Sertralina es un inhibidor selectivo de la recaptación de serotonina (ISRS). Aumenta los niveles de serotonina en el cerebro. Dosis: 50-200mg una vez al día. Indicado para: depresión, trastorno de ansiedad, TOC. Efectos adversos: náuseas, insomnio, disfunción sexual, aumento de peso. Contraindicaciones: uso con IMAO. Advertencia: riesgo de ideas suicidas al inicio del tratamiento.",
+        "guia_paciente": "Tome este medicamento una vez al día, con o sin alimentos. Es para tratar la depresión y la ansiedad. Puede tardar 2-4 semanas en hacer efecto completo. No deje de tomarlo abruptamente, consulte a su médico. Si tiene pensamientos de hacerse daño, busque ayuda inmediatamente. Puede causar náuseas al inicio, esto suele mejorar."
+    },
+    {
+        "id": 14,
+        "nombre": "Azitromicina 500mg",
+        "categoria": "Antibiótico",
+        "stock": 55,
+        "precio": 21.50,
+        "imagen": "https://via.placeholder.com/300x300/27AE60/FFFFFF?text=Azitromicina",
+        "descripcion_tecnica": "Azitromicina es un macrólido de acción prolongada. Inhibe la síntesis de proteínas bacterianas. Dosis: 500mg una vez al día durante 3 días (o según indicación). Indicado para: infecciones respiratorias, infecciones de piel. Efectos adversos: náuseas, diarrea, dolor abdominal. Contraindicaciones: hipersensibilidad a macrólidos, arritmias cardíacas (QT prolongado).",
+        "guia_paciente": "Tome este antibiótico una vez al día, con o sin alimentos. Complete todo el tratamiento aunque se sienta mejor. Generalmente se toma durante 3 días, pero siga las indicaciones de su médico. Puede causar malestar estomacal, tómelo con alimentos si es necesario. Si desarrolla diarrea severa, consulte a su médico."
+    },
+    {
+        "id": 15,
+        "nombre": "Pantoprazol 40mg",
+        "categoria": "Gastroprotector",
+        "stock": 160,
+        "precio": 20.00,
+        "imagen": "https://via.placeholder.com/300x300/F39C12/FFFFFF?text=Pantoprazol",
+        "descripcion_tecnica": "Pantoprazol es un inhibidor de la bomba de protones. Similar a omeprazol. Dosis: 40mg una vez al día antes del desayuno. Indicado para: ERGE, úlcera péptica, síndrome de Zollinger-Ellison. Efectos adversos: cefalea, diarrea, náuseas. Contraindicaciones: hipersensibilidad. Interacciones: puede afectar absorción de otros medicamentos.",
+        "guia_paciente": "Tome una tableta al día, 30 minutos antes del desayuno, con agua. Ayuda a reducir el ácido del estómago. Útil para acidez, reflujo y protección del estómago. Tome todos los días a la misma hora para mejor efecto. Puede tomar unas semanas en hacer efecto completo."
+    },
+    {
+        "id": 16,
+        "nombre": "Metronidazol 500mg",
+        "categoria": "Antibiótico",
+        "stock": 45,
+        "precio": 13.75,
+        "imagen": "https://via.placeholder.com/300x300/27AE60/FFFFFF?text=Metronidazol",
+        "descripcion_tecnica": "Metronidazol es un antibiótico y antiparasitario. Actúa sobre ADN de microorganismos anaerobios y protozoos. Dosis: 500mg cada 8 horas durante 7-10 días. Indicado para: infecciones anaerobias, giardiasis, tricomoniasis. Efectos adversos: sabor metálico, náuseas, vómitos, neuropatía periférica (prolongado). Contraindicaciones: primer trimestre de embarazo. Advertencia: evitar alcohol (reacción tipo disulfiram).",
+        "guia_paciente": "Tome este medicamento con alimentos para reducir náuseas. Complete todo el tratamiento. MUY IMPORTANTE: No consuma alcohol mientras toma este medicamento ni hasta 48 horas después. Puede causar sabor metálico en la boca, esto es normal. Si tiene síntomas neurológicos como hormigueo, informe a su médico."
+    },
+    {
+        "id": 17,
+        "nombre": "Furosemida 40mg",
+        "categoria": "Diurético",
+        "stock": 90,
+        "precio": 7.50,
+        "imagen": "https://via.placeholder.com/300x300/16A085/FFFFFF?text=Furosemida",
+        "descripcion_tecnica": "Furosemida es un diurético de asa. Inhibe la reabsorción de sodio y cloro en el asa de Henle. Dosis: 20-80mg una o dos veces al día. Indicado para: edema, insuficiencia cardíaca, hipertensión. Efectos adversos: deshidratación, hipokalemia, hipotensión, aumento de ácido úrico. Contraindicaciones: anuria, hipersensibilidad. Interacciones: aumenta toxicidad de aminoglucósidos.",
+        "guia_paciente": "Este medicamento aumenta la producción de orina. Tome por la mañana para evitar levantarse por la noche. Puede causar mareos, levántese lentamente. Beba suficiente agua pero no en exceso. Puede causar pérdida de potasio, su médico puede recomendar suplementos o alimentos ricos en potasio como plátanos."
+    },
+    {
+        "id": 18,
+        "nombre": "Warfarina 5mg",
+        "categoria": "Anticoagulante",
+        "stock": 65,
+        "precio": 17.25,
+        "imagen": "https://via.placeholder.com/300x300/E74C3C/FFFFFF?text=Warfarina",
+        "descripcion_tecnica": "Warfarina es un anticoagulante oral que inhibe la síntesis de factores de coagulación dependientes de vitamina K. Dosis: individualizada según INR (objetivo 2-3 generalmente). Indicado para: fibrilación auricular, trombosis venosa, prótesis valvulares. Efectos adversos: hemorragia, necrosis cutánea (raro). Contraindicaciones: hemorragia activa, embarazo. Interacciones múltiples: muchos medicamentos y alimentos.",
+        "guia_paciente": "Tome este medicamento exactamente como se le indicó, a la misma hora cada día. Es un anticoagulante que previene coágulos. Necesitará análisis de sangre regulares (INR) para ajustar la dosis. Evite cambios bruscos en su dieta, especialmente alimentos ricos en vitamina K (verduras de hoja verde). Si nota sangrado inusual, consulte inmediatamente."
+    },
+    {
+        "id": 19,
+        "nombre": "Clonazepam 2mg",
+        "categoria": "Ansiolítico",
+        "stock": 50,
+        "precio": 19.00,
+        "imagen": "https://via.placeholder.com/300x300/9B59B6/FFFFFF?text=Clonazepam",
+        "descripcion_tecnica": "Clonazepam es una benzodiacepina de acción prolongada. Potencia el efecto del GABA. Dosis: 0.5-2mg 2-3 veces al día. Indicado para: ansiedad, convulsiones, síndrome de piernas inquietas. Efectos adversos: somnolencia, ataxia, dependencia, síndrome de abstinencia. Contraindicaciones: glaucoma de ángulo cerrado, insuficiencia respiratoria grave. Advertencia: riesgo de dependencia y abuso.",
+        "guia_paciente": "Tome este medicamento según las indicaciones de su médico. Puede causar somnolencia, evite conducir o manejar maquinaria. No consuma alcohol mientras lo toma. No deje de tomarlo abruptamente, puede causar síntomas de abstinencia. Tome solo la dosis prescrita. Si siente que necesita más, consulte a su médico."
+    },
+    {
+        "id": 20,
+        "nombre": "Insulina Glargina",
+        "categoria": "Antidiabético",
+        "stock": 35,
+        "precio": 45.00,
+        "imagen": "https://via.placeholder.com/300x300/16A085/FFFFFF?text=Insulina",
+        "descripcion_tecnica": "Insulina glargina es una insulina de acción prolongada (basal). Dosis: individualizada, generalmente 10-80 unidades una vez al día a la misma hora. Indicado para: diabetes tipo 1 y tipo 2. Efectos adversos: hipoglucemia, lipodistrofia en sitio de inyección, reacciones alérgicas. Contraindicaciones: hipoglucemia. Conservación: refrigerar (2-8°C), no congelar. Una vez abierto, puede guardarse a temperatura ambiente hasta 28 días.",
+        "guia_paciente": "Inyéctese esta insulina una vez al día a la misma hora, generalmente por la noche. Rote los sitios de inyección (abdomen, muslos, brazos). Mantenga la insulina en el refrigerador, pero no la congele. Una vez abierta, puede guardarse a temperatura ambiente. Monitoree su azúcar en sangre regularmente. Reconozca los síntomas de azúcar baja (temblores, sudoración, confusión) y tenga glucosa a mano."
+    }
+]
+
