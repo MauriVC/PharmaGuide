@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaGuide - Sistema de Gestión Farmacéutica</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="login-screen" class="login-container">
+        <div class="login-card">
+            <div class="text-center mb-4">
+                <i class="fas fa-pills fa-3x text-primary mb-3"></i>
+                <h2 class="fw-bold">PharmaGuide</h2>
+                <p class="text-muted">Sistema de Gestión Farmacéutica</p>
+            </div>
+            <form id="login-form">
+                <div class="mb-3">
+                    <label for="username" class="form-label">
+                        <i class="fas fa-user me-2"></i>Usuario
+                    </label>
+                    <input type="text" class="form-control form-control-lg" id="username" required autocomplete="username">
+                </div>
+                <div class="mb-4">
+                    <label for="password" class="form-label">
+                        <i class="fas fa-lock me-2"></i>Contraseña
+                    </label>
+                    <input type="password" class="form-control form-control-lg" id="password" required autocomplete="current-password">
+                </div>
+                <button type="submit" class="btn btn-primary btn-lg w-100 mb-3">
+                    <i class="fas fa-sign-in-alt me-2"></i>Iniciar Sesión
+                </button>
+                <div id="login-error" class="alert alert-danger d-none" role="alert"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="main-app" class="d-none">
+        <div class="container-fluid p-0">
+            <div class="row g-0">
+                <!-- Sidebar -->
+                <div class="col-auto sidebar">
+                    <div class="sidebar-header">
+                        <h4 class="text-white mb-0">
+                            <i class="fas fa-pills me-2"></i>PharmaGuide
+                        </h4>
+                        <small class="text-muted" id="user-info-sidebar"></small>
+                    </div>
+                    <nav class="sidebar-nav">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="#" data-section="dashboard">
+                                    <i class="fas fa-chart-line me-2"></i>Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-section="buscador">
+                                    <i class="fas fa-search me-2"></i>Buscador
+                                </a>
+                            </li>
+                            <li class="nav-item admin-only">
+                                <a class="nav-link" href="#" data-section="gestion">
+                                    <i class="fas fa-database me-2"></i>Gestión Medicamentos
+                                </a>
+                            </li>
+                            <li class="nav-item admin-only">
+                                <a class="nav-link" href="#" data-section="trabajadores">
+                                    <i class="fas fa-users me-2"></i>Gestión Trabajadores
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#" data-section="configuracion">
+                                    <i class="fas fa-cog me-2"></i>Configuración
+                                </a>
+                            </li>
+                            <li class="nav-item mt-3">
+                                <a class="nav-link text-danger" href="#" id="logout-btn">
+                                    <i class="fas fa-sign-out-alt me-2"></i>Cerrar Sesión
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+            <!-- Main Content -->
+            <div class="col main-content">
+                <!-- Header con información de usuario -->
+                <div class="main-header">
+                    <div class="d-flex justify-content-between align-items-center p-3">
+                        <div>
+                            <h5 class="mb-0" id="user-welcome">Bienvenido</h5>
+                            <small class="text-muted" id="user-role-badge"></small>
+                        </div>
+                        <div class="text-end">
+                            <span class="badge bg-primary" id="medicamentos-count">0 medicamentos</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dashboard Section -->
+                <div id="dashboard" class="content-section active">
+                    <div class="p-4">
+                        <h2 class="mb-4">
+                            <i class="fas fa-chart-line me-2"></i>Dashboard
+                        </h2>
+                        <div class="row g-4">
+                            <div class="col-md-3">
+                                <div class="card shadow-sm">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="text-muted mb-2">Total Medicamentos</h6>
+                                                <h3 class="mb-0" id="total-medicamentos">0</h3>
+                                                <small class="text-muted" id="total-categorias">0 categorías</small>
+                                            </div>
+                                            <div class="icon-box bg-primary">
+                                                <i class="fas fa-pills text-white"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card shadow-sm">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="text-muted mb-2">Stock Total</h6>
+                                                <h3 class="mb-0 text-info" id="stock-total">0</h3>
+                                                <small class="text-muted">unidades disponibles</small>
+                                            </div>
+                                            <div class="icon-box bg-info">
+                                                <i class="fas fa-boxes text-white"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card shadow-sm">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="text-muted mb-2">Bajo Stock</h6>
+                                                <h3 class="mb-0 text-warning" id="bajo-stock">0</h3>
+                                                <small class="text-muted" id="agotados">0 agotados</small>
+                                            </div>
+                                            <div class="icon-box bg-warning">
+                                                <i class="fas fa-exclamation-triangle text-white"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="card shadow-sm">
+                                    <div class="card-body">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <h6 class="text-muted mb-2">Valor Inventario</h6>
+                                                <h3 class="mb-0 text-success" id="valor-inventario">Bs. 0.00</h3>
+                                                <small class="text-muted">valor total estimado</small>
+                                            </div>
+                                            <div class="icon-box bg-success">
+                                                <i class="fas fa-money-bill-wave text-white"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-4 mt-2">
+                            <div class="col-md-6">
+                                <div class="card shadow-sm">
+                                    <div class="card-header bg-white">
+                                        <h6 class="mb-0">
+                                            <i class="fas fa-exclamation-circle me-2 text-warning"></i>Medicamentos con Bajo Stock
+                                        </h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="medicamentos-bajo-stock" style="max-height: 300px; overflow-y: auto;">
+                                            <!-- Se llenará dinámicamente -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card shadow-sm">
+                                    <div class="card-header bg-white">
+                                        <h6 class="mb-0">
+                                            <i class="fas fa-tags me-2 text-primary"></i>Medicamentos Más Caros
+                                        </h6>
+                                    </div>
+                                    <div class="card-body">
+                                        <div id="medicamentos-caros" style="max-height: 300px; overflow-y: auto;">
+                                            <!-- Se llenará dinámicamente -->
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <div class="card shadow-sm">
+                                <div class="card-header bg-white">
+                                    <h5 class="mb-0">Resumen de Categorías</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div id="categorias-resumen" class="row g-3">
+                                        <!-- Se llenará dinámicamente -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Buscador Section -->
+                <div id="buscador" class="content-section">
+                    <div class="p-4">
+                        <h2 class="mb-4">
+                            <i class="fas fa-search me-2"></i>Buscador de Medicamentos
+                        </h2>
+                        <div class="card shadow-sm mb-4">
+                            <div class="card-body">
+                                <div class="input-group input-group-lg">
+                                    <span class="input-group-text bg-white">
+                                        <i class="fas fa-search text-muted"></i>
+                                    </span>
+                                    <input type="text" 
+                                           class="form-control" 
+                                           id="search-input" 
+                                           placeholder="Buscar medicamento por nombre...">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Imagen</th>
+                                                <th>Nombre</th>
+                                                <th>Categoría</th>
+                                                <th>Stock</th>
+                                                <th>Precio</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabla-resultados">
+                                            <!-- Se llenará dinámicamente -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gestión Section (Solo Admin) -->
+                <div id="gestion" class="content-section">
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h2 class="mb-0">
+                                <i class="fas fa-database me-2"></i>Gestión de Medicamentos
+                            </h2>
+                            <button class="btn btn-primary" onclick="abrirModalCrear()">
+                                <i class="fas fa-plus me-2"></i>Nuevo Medicamento
+                            </button>
+                        </div>
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Imagen</th>
+                                                <th>Nombre</th>
+                                                <th>Categoría</th>
+                                                <th>Stock</th>
+                                                <th>Precio</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabla-gestion">
+                                            <!-- Se llenará dinámicamente -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gestión Trabajadores Section (Solo Admin) -->
+                <div id="trabajadores" class="content-section">
+                    <div class="p-4">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h2 class="mb-0">
+                                <i class="fas fa-users me-2"></i>Gestión de Trabajadores
+                            </h2>
+                            <button class="btn btn-primary" onclick="abrirModalCrearTrabajador()">
+                                <i class="fas fa-user-plus me-2"></i>Nuevo Trabajador
+                            </button>
+                        </div>
+                        <div class="card shadow-sm">
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>ID</th>
+                                                <th>Usuario</th>
+                                                <th>Nombre</th>
+                                                <th>Email</th>
+                                                <th>Rol</th>
+                                                <th>Acciones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="tabla-trabajadores">
+                                            <!-- Se llenará dinámicamente -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Configuración Section -->
+                <div id="configuracion" class="content-section">
+                    <div class="p-4">
+                        <h2 class="mb-4">
+                            <i class="fas fa-cog me-2"></i>Configuración
+                        </h2>
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <div class="card shadow-sm">
+                                    <div class="card-header bg-white">
+                                        <h5 class="mb-0">
+                                            <i class="fas fa-info-circle me-2"></i>Información del Sistema
+                                        </h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row mb-3">
+                                            <div class="col-6">
+                                                <strong>Nombre:</strong>
+                                            </div>
+                                            <div class="col-6">
+                                                PharmaGuide
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-6">
+                                                <strong>Versión:</strong>
+                                            </div>
+                                            <div class="col-6">
+                                                2.0.0
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-6">
+                                                <strong>Tipo:</strong>
+                                            </div>
+                                            <div class="col-6">
+                                                Sistema de Gestión Farmacéutica
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <strong>Desarrollado para:</strong>
+                                            </div>
+                                            <div class="col-6">
+                                                Hackathon C
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card shadow-sm">
+                                    <div class="card-header bg-white">
+                                        <h5 class="mb-0">
+                                            <i class="fas fa-user me-2"></i>Información de Usuario
+                                        </h5>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row mb-3">
+                                            <div class="col-6">
+                                                <strong>Usuario:</strong>
+                                            </div>
+                                            <div class="col-6" id="config-usuario">
+                                                -
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-6">
+                                                <strong>Rol:</strong>
+                                            </div>
+                                            <div class="col-6" id="config-rol">
+                                                -
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                <strong>Estado:</strong>
+                                            </div>
+                                            <div class="col-6">
+                                                <span class="badge bg-success">Activo</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <p class="text-muted mb-0">
+                                        <i class="fas fa-info-circle me-2"></i>
+                                        Sistema desarrollado con HTML5, CSS3 y JavaScript ES6. 
+                                        Funciona completamente offline sin necesidad de servidor.
+                                        Los datos se almacenan localmente en el navegador.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Detalles -->
+    <div class="modal fade" id="modalDetalles" tabindex="-1" aria-labelledby="modalDetallesLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalDetallesLabel">
+                        <i class="fas fa-pills me-2"></i>Detalles del Medicamento
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card h-100">
+                                <div class="card-header bg-light">
+                                    <h6 class="mb-0">
+                                        <i class="fas fa-flask me-2"></i>Datos Técnicos
+                                    </h6>
+                                </div>
+                                <div class="card-body" id="datos-tecnicos">
+                                    <!-- Se llenará dinámicamente -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card h-100 guia-paciente">
+                                <div class="card-header bg-success text-white">
+                                    <h6 class="mb-0">
+                                        <i class="fas fa-user-md me-2"></i>Guía para el Paciente
+                                    </h6>
+                                </div>
+                                <div class="card-body" id="guia-paciente">
+                                    <!-- Se llenará dinámicamente -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="button" class="btn btn-primary admin-only" id="btn-editar-desde-detalles" onclick="editarDesdeDetalles()" style="display: none;">
+                        <i class="fas fa-edit me-2"></i>Editar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Crear/Editar Medicamento -->
+    <div class="modal fade" id="modalMedicamento" tabindex="-1" aria-labelledby="modalMedicamentoLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalMedicamentoLabel">
+                        <i class="fas fa-pills me-2"></i>Nuevo Medicamento
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="form-medicamento">
+                    <div class="modal-body">
+                        <input type="hidden" id="medicamento-id" name="id">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="medicamento-nombre" class="form-label">
+                                    <i class="fas fa-tag me-1"></i>Nombre del Medicamento <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="medicamento-nombre" name="nombre" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="medicamento-categoria" class="form-label">
+                                    <i class="fas fa-folder me-1"></i>Categoría <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-select" id="medicamento-categoria" name="categoria" required>
+                                    <option value="">Seleccione una categoría</option>
+                                    <option value="Analgésico">Analgésico</option>
+                                    <option value="Antiinflamatorio">Antiinflamatorio</option>
+                                    <option value="Antibiótico">Antibiótico</option>
+                                    <option value="Gastroprotector">Gastroprotector</option>
+                                    <option value="Antihistamínico">Antihistamínico</option>
+                                    <option value="Antidiabético">Antidiabético</option>
+                                    <option value="Hipolipemiante">Hipolipemiante</option>
+                                    <option value="Antihipertensivo">Antihipertensivo</option>
+                                    <option value="Broncodilatador">Broncodilatador</option>
+                                    <option value="Hormona Tiroidea">Hormona Tiroidea</option>
+                                    <option value="Antidepresivo">Antidepresivo</option>
+                                    <option value="Diurético">Diurético</option>
+                                    <option value="Anticoagulante">Anticoagulante</option>
+                                    <option value="Ansiolítico">Ansiolítico</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="medicamento-stock" class="form-label">
+                                    <i class="fas fa-boxes me-1"></i>Stock <span class="text-danger">*</span>
+                                </label>
+                                <input type="number" class="form-control" id="medicamento-stock" name="stock" min="0" required>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="medicamento-precio" class="form-label">
+                                    <i class="fas fa-money-bill me-1"></i>Precio (Bs.) <span class="text-danger">*</span>
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-text">Bs.</span>
+                                    <input type="number" class="form-control" id="medicamento-precio" name="precio" min="0" step="0.01" required>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="medicamento-id-input" class="form-label">
+                                    <i class="fas fa-hashtag me-1"></i>ID
+                                </label>
+                                <input type="number" class="form-control" id="medicamento-id-input" name="id-input" readonly>
+                            </div>
+                            <div class="col-12">
+                                <label for="medicamento-imagen" class="form-label">
+                                    <i class="fas fa-image me-1"></i>URL de Imagen
+                                </label>
+                                <input type="url" class="form-control" id="medicamento-imagen" name="imagen" placeholder="https://ejemplo.com/imagen.jpg">
+                                <small class="text-muted">URL de la imagen del medicamento (opcional)</small>
+                            </div>
+                            <div class="col-12">
+                                <label for="medicamento-descripcion" class="form-label">
+                                    <i class="fas fa-flask me-1"></i>Descripción Técnica <span class="text-danger">*</span>
+                                </label>
+                                <textarea class="form-control" id="medicamento-descripcion" name="descripcion_tecnica" rows="4" required></textarea>
+                                <small class="text-muted">Incluya mecanismo de acción, dosis, efectos adversos, contraindicaciones, etc.</small>
+                            </div>
+                            <div class="col-12">
+                                <label for="medicamento-guia" class="form-label">
+                                    <i class="fas fa-user-md me-1"></i>Guía para el Paciente <span class="text-danger">*</span>
+                                </label>
+                                <textarea class="form-control" id="medicamento-guia" name="guia_paciente" rows="4" required></textarea>
+                                <small class="text-muted">Instrucciones claras y simples para explicar al paciente cómo tomar el medicamento.</small>
+                            </div>
+                        </div>
+                        <div id="form-errors" class="alert alert-danger d-none mt-3" role="alert"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-2"></i>Guardar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Crear/Editar Trabajador -->
+    <div class="modal fade" id="modalTrabajador" tabindex="-1" aria-labelledby="modalTrabajadorLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTrabajadorLabel">
+                        <i class="fas fa-user-plus me-2"></i>Nuevo Trabajador
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="form-trabajador">
+                    <div class="modal-body">
+                        <input type="hidden" id="trabajador-id" name="id">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label for="trabajador-username" class="form-label">
+                                    <i class="fas fa-user me-1"></i>Usuario <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="trabajador-username" name="username" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="trabajador-email" class="form-label">
+                                    <i class="fas fa-envelope me-1"></i>Email (Gmail) <span class="text-danger">*</span>
+                                </label>
+                                <input type="email" class="form-control" id="trabajador-email" name="email" placeholder="ejemplo@gmail.com" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="trabajador-nombre" class="form-label">
+                                    <i class="fas fa-id-card me-1"></i>Nombre Completo <span class="text-danger">*</span>
+                                </label>
+                                <input type="text" class="form-control" id="trabajador-nombre" name="nombre" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="trabajador-password" class="form-label">
+                                    <i class="fas fa-lock me-1"></i>Contraseña <span class="text-danger">*</span>
+                                </label>
+                                <input type="password" class="form-control" id="trabajador-password" name="password" required>
+                                <small class="text-muted">Mínimo 6 caracteres</small>
+                            </div>
+                            <div class="col-md-12">
+                                <label for="trabajador-rol" class="form-label">
+                                    <i class="fas fa-user-tag me-1"></i>Rol <span class="text-danger">*</span>
+                                </label>
+                                <select class="form-select" id="trabajador-rol" name="rol" required>
+                                    <option value="">Seleccione un rol</option>
+                                    <option value="trabajador">Trabajador</option>
+                                    <option value="cliente">Cliente</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div id="form-errors-trabajador" class="alert alert-danger d-none mt-3" role="alert"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fas fa-save me-2"></i>Guardar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Confirmar Eliminación Trabajador -->
+    <div class="modal fade" id="modalConfirmarEliminarTrabajador" tabindex="-1" aria-labelledby="modalConfirmarEliminarTrabajadorLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="modalConfirmarEliminarTrabajadorLabel">
+                        <i class="fas fa-exclamation-triangle me-2"></i>Confirmar Eliminación
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Está seguro de que desea eliminar al trabajador <strong id="trabajador-eliminar-nombre"></strong>?</p>
+                    <p class="text-danger mb-0"><small>Esta acción no se puede deshacer.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="btn-confirmar-eliminar-trabajador">
+                        <i class="fas fa-trash me-2"></i>Eliminar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Confirmar Eliminación -->
+    <div class="modal fade" id="modalConfirmarEliminar" tabindex="-1" aria-labelledby="modalConfirmarEliminarLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="modalConfirmarEliminarLabel">
+                        <i class="fas fa-exclamation-triangle me-2"></i>Confirmar Eliminación
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Está seguro de que desea eliminar el medicamento <strong id="medicamento-eliminar-nombre"></strong>?</p>
+                    <p class="text-danger mb-0"><small>Esta acción no se puede deshacer.</small></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="button" class="btn btn-danger" id="btn-confirmar-eliminar">
+                        <i class="fas fa-trash me-2"></i>Eliminar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Data Files -->
+    <script src="data/usuarios.js"></script>
+    <script src="data/medicamentos.js"></script>
+    
+    <!-- Core Modules -->
+    <script src="js/storage.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/navegacion.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/buscador.js"></script>
+    <script src="js/crud.js"></script>
+    <script src="js/trabajadores.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
+
